@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="../style.css">
+    <script src="../script.js"></script>  
     <script src="/socket.io/socket.io.js"></script>        
 </head> 
     <p> 
@@ -20,7 +21,10 @@
         <!--Socket.io-->
         <script src="/socket.io/socket.io.js"></script>
         <!--my Script-->
+        
         <script>
+
+
         let socket = io();
         socket.on('connected', () => {
             console.log("connected" + socket.id)
@@ -38,7 +42,18 @@
 
             socket.on('recv_msg', function (data) {
                 msglist.append($('<li>' + data.message + '</li>'))
+            });
+
+            socket.on('get users', function(data) {
+                var html = '';
+
+                data.forEach(function(dat) {
+                    html += '<li>' +dat+ '</li>'
+                });
+
+                users.html(html)
             })
+
         })
 
         </script>

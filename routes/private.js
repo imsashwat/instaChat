@@ -5,7 +5,7 @@ route.get('/chat', function(req, res, next) {
     if(err) {
         return res.write('ERROR!');
     }
-    res.sendFile('chat.html')
+    res.render('chat')
 })
 
 route.get('/', (req, res) => {
