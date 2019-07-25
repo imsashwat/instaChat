@@ -1,12 +1,45 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-</head>
-<body>
-    <p>here i will be having my chat interface</p>
-</body>
-</html>
+    <link rel="stylesheet" href="../style.css">
+    <script src="/socket.io/socket.io.js"></script>        
+</head> 
+    <p> 
+        <input type="text" id="msgbox" placeholder="new message">
+        <button id="sendmsg">SEND</button>
+        <ul id="msglist"></ul>
+    </p>
+ <!--jQuery-->
+        <script src="https://code.jquery.com/jquery-3.1.0.min.js" type="text/javascript" charset="utf-8"></script>
+        <!--Bootstrap JS-->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!--Socket.io-->
+        <script src="/socket.io/socket.io.js"></script>
+        <!--my Script-->
+        <script>
+        let socket = io();
+        socket.on('connected', () => {
+            console.log("connected" + socket.id)
+        })
+
+        $(function () {
+            let msglist = $('#msglist')
+            let sendbtn = $('#sendmsg')
+            let msgbox = $('#msgbox')
+
+
+            sendbtn.click(function () {
+                socket.emit('send_msg', {message : msgbox.val()})
+            })
+
+            socket.on('recv_msg', function (data) {
+                msglist.append($('<li>' + data.message + '</li>'))
+            })
+        })
+
+        </script>
+ 
