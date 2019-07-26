@@ -1,41 +1,34 @@
 
-.bg-modal {
-    width: 100%;
-    height: 100%;
-    background-color: black;
-    opacity: 0.7;
-    position: absolute;
-    top: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center
-}
-
-
-.modal-content {
-    width: 500px;
-    height: 300px;
-    background-color: white;
-    border-radius: 4px;
-    text-align: center;
-    padding: 20px;
-}
-
 input {
-    width: 50%;
+    width: 100%;
     display: block;
     margin: 15px auto;
 }
+
+.tempbox{
+    width: 320px;
+    height: 420px;
+    background: linear-gradient(to bottom, #D5DEE7 0%, #E8EBF2 50%, #E2E7ED 100%), linear-gradient(to bottom, rgba(0,0,0,0.02) 50%, rgba(255,255,255,0.02) 61%, rgba(0,0,0,0.02) 73%), linear-gradient(33deg, rgba(255,255,255,0.20) 0%, rgba(0,0,0,0.20) 100%);
+    background-blend-mode: normal,color-burn;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 
 body, html {
     height: 100%;
 }
 body {
-    background-color: #3498db;
-    color: white;
+      background: linear-gradient(to right, #2980b9, #6dd5fa, #ffffff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
     font-family: Roboto, sans-serif;
 }
-.form-control::-webkit-input-placeholder { color: white; }
+.form-control::-webkit-input-placeholder { color:white; }
 .form-control:-moz-placeholder { color: white; }
 .form-control::-moz-placeholder { color: white; }
 .form-control:-ms-input-placeholder { color: white; }
@@ -59,25 +52,27 @@ body {
 }
 
 #userFormArea p {
-    margin-bottom: 40px;
+    
+    margin: 0%;
+    padding: 0%;
+    font-weight: bold;
+}
+
+#hover:hover {
+    cursor: pointer;
+    
 }
 
 #userFormArea input{
     background-color: transparent;
     border: none;
-    border-bottom: 2px solid white;
-    border-radius: 0;
-    box-shadow: none;
-    color: white;
-    padding-left: 0;
-    padding-right: 0;
-    margin-bottom: 5px;
-}
-
-#userFormArea .btn-submit {
-    background-color: white;
-    border-radius: 0;
-    color: #3498db;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    height: 40px;    
+    color: black;
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
 .left-panel {
@@ -85,7 +80,7 @@ body {
     top: 0;
     left: 0;
     width: 20%;
-    background-color: transparent;
+    background-color: #ff6b81;
     height: 100%;
     text-align: center;
 }
@@ -106,7 +101,7 @@ body {
 }
 
 .left-panel ul li {
-    border-bottom: 2px solid white;
+    border-bottom: 2px solid #bdc3c7;
 }
 
 .right-panel form{

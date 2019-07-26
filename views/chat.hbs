@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,27 +9,49 @@
     <script src="scripts.js"></script>  
     <script src="/socket.io/socket.io.js"></script>    
     <script src="https://code.jquery.com/jquery-3.1.0.min.js" type="text/javascript" charset="utf-8"></script>
-    
-</head> 
-<body>
-        <!--Nick name popup-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
 
-        <div id="userFormArea">
+</head> 
+<body class="container-fluid">
+        <!--Nick name popup-->
+        <style>
+::placeholder {
+  color: white;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+ color: white;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+ color: white;
+}
+</style>
+        <div class="tempbox">
+            <div id="userFormArea" >
             <form id="userForm">
-                <div class="form-group">
-                    <h1>Chatty</h1>
-                    <p>Simple web chat built with Socket.io and NodeJS.</p>
-                    
-                    <input type="text" id="username" class="form-control" placeholder="Enter your username"/>
-                    <button type="submit" class="btn btn-submit btn-block">Login</button>
+                <h1 class="card-title mt-4" style="font-weight: 400">InstaChat</h1>
+                <p class="card-subtitle mt-2" style="font-weight: 200">Instantly connect with your loved ones</p>
+                <div class="form-group" >
+                    <br>
+                    <br>
+                    <br>
+                    <p class="card-text mt-0" style="font-weight: 200">Please enter your Nickname</p>
+                    <input  type="text" id="username" class="form-control" placeholder="Enter your Nickname"/>
+                    <button class="btn  btn-primary mt-4 font-weight-bold py-x py-2" id="nick">Get started</button>
                 </div>
             </form>
-</div>
+            </div>
+        </div>
     
     <div class="container-fluid" >
             <div class="row" id="messageArea">
                 <div class="left-panel">
-                    <h3>Online Users</h3>
+                    <h3 style="color: white">Online Users</h3>
                     <ul id="users"></ul>
                 </div>
                 <div class="right-panel">
@@ -43,21 +65,21 @@
             </div>
         </div>
 
- <!--jQuery-->
+        <!--jQuery-->
         <script src="https://code.jquery.com/jquery-3.1.0.min.js" type="text/javascript" charset="utf-8"></script>
         <!--Bootstrap JS-->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <!--Socket.io-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+          <!--Socket.io-->
         <script src="/socket.io/socket.io.js"></script>
         <!--my Script-->
         
         <script>
-
 let socket = io();
 socket.on('connected', () => {
     console.log("connected" + socket.id)
 });
-
 $(function () {
     var messageForm = $("#messageForm");
     var message = $("#message");
@@ -67,7 +89,8 @@ $(function () {
     var userForm = $("#userForm");
     var users = $("#users");
     var username = $("#username");
-
+    
+    
     messageForm.submit(function(e) {
     e.preventDefault();
     if(message.val() !== ''){
@@ -75,16 +98,17 @@ $(function () {
     message.val('');
     }
     });
-
                 socket.on('new message', function(data){
                    chat.scrollTop(chat[0].scrollHeight);
                     
                     chat.append('<div class="message"><strong>'+data.user+'</strong>: '+data.msg+'</div> <br />')
                 })
-
-
     userForm.submit(function(e) {
                     e.preventDefault();
+                    if($('#username').val() == ''){
+                    alert('Oops you forget to enter your Nickname');
+                    }
+                    else
                     socket.emit('new user', username.val(), function(data){
                         if(data) {
                             userFormArea.hide();
@@ -93,7 +117,6 @@ $(function () {
                     });
                     username.val('');
                 });
-
     
      socket.on('get users', function(data){
                     var html = '';
@@ -103,12 +126,13 @@ $(function () {
                     });
                     
                     users.html(html);
-                });
-                
+                });   
             });
 
+        
+
+
+        
         </script>
       </body>
-    </html>
-
- 
+</html>
