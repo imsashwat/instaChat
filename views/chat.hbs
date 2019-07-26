@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>  
+    <script src="scripts.js"></script>  
     <script src="/socket.io/socket.io.js"></script>    
     <script src="https://code.jquery.com/jquery-3.1.0.min.js" type="text/javascript" charset="utf-8"></script>
     
@@ -14,15 +14,17 @@
 <body>
         <!--Nick name popup-->
 
-        <div class="bg-modal">
-            <div class="model-content userFormArea">
-                <form id="userform">
-                    <input type="text" id="username" class="form-control" placeholder="Enter yuour Nickname" />
-                    <button type="submit" class="">Good to Go</button>
-                </form>
-            </div>
-        </div>
-
+        <div id="userFormArea">
+            <form id="userForm">
+                <div class="form-group">
+                    <h1>Chatty</h1>
+                    <p>Simple web chat built with Socket.io and NodeJS.</p>
+                    
+                    <input type="text" id="username" class="form-control" placeholder="Enter your username"/>
+                    <button type="submit" class="btn btn-submit btn-block">Login</button>
+                </div>
+            </form>
+</div>
     
     <div class="container-fluid" >
             <div class="row" id="messageArea">
