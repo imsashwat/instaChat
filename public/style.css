@@ -1,0 +1,144 @@
+
+.bg-modal {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.7;
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+
+.modal-content {
+    width: 500px;
+    height: 300px;
+    background-color: white;
+    border-radius: 4px;
+    text-align: center;
+    padding: 20px;
+}
+
+input {
+    width: 50%;
+    display: block;
+    margin: 15px auto;
+}
+
+body, html {
+    height: 100%;
+}
+body {
+    background-color: #3498db;
+    color: white;
+    font-family: Roboto, sans-serif;
+}
+.form-control::-webkit-input-placeholder { color: white; }
+.form-control:-moz-placeholder { color: white; }
+.form-control::-moz-placeholder { color: white; }
+.form-control:-ms-input-placeholder { color: white; }
+
+.form-group {
+    margin-bottom: 0;
+}
+
+#messageArea{
+    display: none;
+}
+
+#userFormArea{
+    display: flex;
+/*                display: none;*/
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+}
+
+#userFormArea p {
+    margin-bottom: 40px;
+}
+
+#userFormArea input{
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid white;
+    border-radius: 0;
+    box-shadow: none;
+    color: white;
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: 5px;
+}
+
+#userFormArea .btn-submit {
+    background-color: white;
+    border-radius: 0;
+    color: #3498db;
+}
+
+.left-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20%;
+    background-color: transparent;
+    height: 100%;
+    text-align: center;
+}
+
+.right-panel {
+    position: fixed;
+    top: 0;
+    left: 20%;
+    width: 80%;
+    background-color: #bdc3c7;
+    height: 100%;
+}
+
+.left-panel ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 20px;
+}
+
+.left-panel ul li {
+    border-bottom: 2px solid white;
+}
+
+.right-panel form{
+    position: fixed;
+    bottom: 0;
+    left: 20%;
+    right: 0;
+}
+
+.right-panel form input {
+    border: none;
+    border-radius: 0;
+    height: 60px;
+    
+}
+
+.right-panel form .btn-submit {
+    border: none;
+    border-radius: 0;
+    background-color: #e74c3c;
+}
+
+.chat {
+    padding: 20px 30px;
+    overflow: scroll;
+    height: calc(100% - 60px);
+}
+
+.message {
+    background-color: #2ecc71;
+    border-radius: 10px;
+    display: inline-block;
+    padding: 15px;
+    margin-bottom: 15px;
+}

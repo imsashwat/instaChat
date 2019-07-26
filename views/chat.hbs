@@ -5,15 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="../style.css">
-    <script src="../script.js"></script>  
-    <script src="/socket.io/socket.io.js"></script>        
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>  
+    <script src="/socket.io/socket.io.js"></script>    
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" type="text/javascript" charset="utf-8"></script>
+    
 </head> 
-    <p> 
-        <input type="text" id="msgbox" placeholder="new message">
-        <button id="sendmsg">SEND</button>
-        <ul id="msglist"></ul>
-    </p>
+<body>
+        <!--Nick name popup-->
+
+        <div class="bg-modal">
+            <div class="model-content userFormArea">
+                <form id="userform">
+                    <input type="text" id="username" class="form-control" placeholder="Enter yuour Nickname" />
+                    <button type="submit" class="">Good to Go</button>
+                </form>
+            </div>
+        </div>
+
+    
+    <div class="container-fluid" >
+            <div class="row" id="messageArea">
+                <div class="left-panel">
+                    <h3>Online Users</h3>
+                    <ul id="users"></ul>
+                </div>
+                <div class="right-panel">
+                    <div class="chat" id="chat"></div>
+                    <form id="messageForm">
+                        <div class="form-group">
+                            <input type="text" id="message" class="form-control" placeholder="Enter message"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
  <!--jQuery-->
         <script src="https://code.jquery.com/jquery-3.1.0.min.js" type="text/javascript" charset="utf-8"></script>
         <!--Bootstrap JS-->
@@ -24,37 +51,62 @@
         
         <script>
 
+let socket = io();
+socket.on('connected', () => {
+    console.log("connected" + socket.id)
+});
 
-        let socket = io();
-        socket.on('connected', () => {
-            console.log("connected" + socket.id)
-        })
+$(function () {
+    var messageForm = $("#messageForm");
+    var message = $("#message");
+    var chat = $("#chat");
+    var userFormArea = $("#userFormArea");
+    var messageArea = $("#messageArea");
+    var userForm = $("#userForm");
+    var users = $("#users");
+    var username = $("#username");
 
-        $(function () {
-            let msglist = $('#msglist')
-            let sendbtn = $('#sendmsg')
-            let msgbox = $('#msgbox')
+    messageForm.submit(function(e) {
+    e.preventDefault();
+    if(message.val() !== ''){
+    socket.emit('send message', message.val())
+    message.val('');
+    }
+    });
+
+                socket.on('new message', function(data){
+                   chat.scrollTop(chat[0].scrollHeight);
+                    
+                    chat.append('<div class="message"><strong>'+data.user+'</strong>: '+data.msg+'</div> <br />')
+                })
 
 
-            sendbtn.click(function () {
-                socket.emit('send_msg', {message : msgbox.val()})
-            })
-
-            socket.on('recv_msg', function (data) {
-                msglist.append($('<li>' + data.message + '</li>'))
-            });
-
-            socket.on('get users', function(data) {
-                var html = '';
-
-                data.forEach(function(dat) {
-                    html += '<li>' +dat+ '</li>'
+    userForm.submit(function(e) {
+                    e.preventDefault();
+                    socket.emit('new user', username.val(), function(data){
+                        if(data) {
+                            userFormArea.hide();
+                            messageArea.show();
+                        } 
+                    });
+                    username.val('');
                 });
 
-                users.html(html)
-            })
-
-        })
+    
+     socket.on('get users', function(data){
+                    var html = '';
+                    
+                    data.forEach(function(dat) {
+                        html +=  '<li>'+dat+'</li>'
+                    });
+                    
+                    users.html(html);
+                });
+                
+            });
 
         </script>
+      </body>
+    </html>
+
  
