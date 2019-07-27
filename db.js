@@ -1,14 +1,9 @@
 const Sequelize = require('sequelize');
 
-const db = new Sequelize(
-    'userdb',
-    'userdb',
-    'userdb',
-    {
-        dialect: 'mysql',
-        host: 'localhost'
-    }
-)
+const db = new Sequelize(process.env.DATABASE_URL, {    
+        dialect: 'postgres',        
+    });
+
 
 const Users = db.define('users', {
     username: {
