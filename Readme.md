@@ -1,4 +1,6 @@
-![Screenshot](https://raw.githubusercontent.com/OmarElGabry/chat.io/master/public/img/chat.io.gif)
+![Screenshot]!(https://user-images.githubusercontent.com/30342542/61997755-2efe3100-b0c4-11e9-9f95-a8014f10939d.gif)
+![Screenshot]!(https://user-images.githubusercontent.com/30342542/61997790-a03de400-b0c4-11e9-8ed9-b95d4eb40428.gif)
+
 
 # InstaChat
 
