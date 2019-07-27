@@ -12,6 +12,7 @@ const io = socketio(server)
 var users = [];
 var connections = [];
 
+app.use('/', express.static('views'));
 app.use('/', express.static('public'));
 
 app.set("view engine", ".hbs");
