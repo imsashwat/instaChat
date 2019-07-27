@@ -23,6 +23,7 @@ input {
 body, html {
     height: 100%;
 }
+
 body {
       background: linear-gradient(to right, #2980b9, #6dd5fa, #ffffff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
@@ -35,6 +36,10 @@ body {
 
 .form-group {
     margin-bottom: 0;
+}
+
+#users {
+    font-family: 'Questrial', sans-serif;
 }
 
 #messageArea{
