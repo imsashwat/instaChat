@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css?family=Questrial&display=swap');
 input {
     width: 100%;
     display: block;
@@ -105,7 +105,7 @@ body {
 }
 
 .right-panel form{
-    position: fixed;
+    
     bottom: 0;
     left: 20%;
     right: 0;
@@ -113,7 +113,7 @@ body {
 
 .right-panel form input {
     border: none;
-    border-radius: 0;
+    border-radius: 20;
     height: 60px;
     
 }
@@ -136,4 +136,11 @@ body {
     display: inline-block;
     padding: 15px;
     margin-bottom: 15px;
+    font-family: 'Questrial', sans-serif;
+    color: black;
+}
+
+
+.msg {
+    color: white;
 }

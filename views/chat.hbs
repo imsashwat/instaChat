@@ -12,21 +12,19 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Questrial|Source+Sans+Pro&display=swap" rel="stylesheet"> 
 </head>
 
 </head> 
 <body class="container-fluid">
-        <!--Nick name popup-->
         <style>
 ::placeholder {
   color: white;
   opacity: 1; /* Firefox */
 }
-
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
  color: white;
 }
-
 ::-ms-input-placeholder { /* Microsoft Edge */
  color: white;
 }
@@ -51,8 +49,8 @@
     <div class="container-fluid" >
             <div class="row" id="messageArea">
                 <div class="left-panel">
-                    <h3 style="color: white">Online Users</h3>
-                    <ul id="users"></ul>
+                    <h3 style="font-family: 'Source Sans Pro', sans-serif; color: white">Online Users</h3>
+                    <ul id="users"  style='font-family: 'Questrial', sans-serif;'></ul>
                 </div>
                 <div class="right-panel">
                     <div class="chat" id="chat"></div>
@@ -101,8 +99,8 @@ $(function () {
                 socket.on('new message', function(data){
                    chat.scrollTop(chat[0].scrollHeight);
                     
-                    chat.append('<div class="message"><strong>'+data.user+'</strong>: '+data.msg+'</div> <br />')
-                })
+ chat.append('<div class="message"><strong>'+data.user+'</strong>: '+ '<span class="msg">' + data.msg+ '</span>'+ '</div> <br />')   
+              })
     userForm.submit(function(e) {
                     e.preventDefault();
                     if($('#username').val() == ''){
@@ -128,10 +126,7 @@ $(function () {
                     users.html(html);
                 });   
             });
-
         
-
-
         
         </script>
       </body>
