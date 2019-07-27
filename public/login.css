@@ -61,3 +61,23 @@ body {
 .btn-custom:focus {
     box-shadow: 0 0 0 0.2 rgba(114, 61, 190, .25);
 }
+
+.sharer {
+    text-align: center;
+  }
+  
+  .sharer-image {
+    margin: 0 10px;
+    display: inline-block;
+  }
+  
+  .sharer-image {
+    cursor: pointer;
+  }
+
+  @media screen and (max-width: 760px)  {
+    .sharer {
+        margin: 30px 0;
+      }
+    
+  }

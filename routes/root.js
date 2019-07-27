@@ -7,12 +7,11 @@ route.get('/login', (req, res) => {
     res.render('login')
 })
 route.get('/', (req, res) => {
-    res.render('login')
+    res.render('signup')
 })
 route.get('/signup', (req, res) => {
     res.render('signup')
 })
-
 route.post('/login', passport.authenticate('local', {
     failureRedirect: '/login',
     successRedirect: '/private'
